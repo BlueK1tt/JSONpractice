@@ -1,0 +1,21 @@
+{
+  "this is filename": [
+    {
+      "category": "thisisnextcategory",
+      "dataobject": {
+        "data1": "thisisnestdata1",
+        "data2": "thisisnestdata2",
+        "moredata": [
+          {
+            "data1": "thisisnestdata1",
+            "data2": "thisisnestdata2"
+          },
+          {
+            "data3": "thisisnestdata3",
+            "data4": "thisisnestdata4"
+          }
+        ]
+      }
+    }
+  ]
+}
