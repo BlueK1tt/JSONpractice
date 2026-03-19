@@ -17,6 +17,8 @@ nestdata4 = "thisisnestdata4"
 testname1 = "depotname1"
 testname2 = "depotname2"
 
+var depositoryname = "Deplyserver"
+var servername = "Servername"
 
 var someObj = {};
 var foo = 'bar';
@@ -31,7 +33,6 @@ if(rawdata1 == ""){
 }   
 if(rawdata1 != ""){
     console.log("file not empty")
-    let json1 = JSON.parse(rawdata1);
     appendjson();
     return;
 
@@ -47,6 +48,7 @@ function firstentry(){
     //const nestedcategory = [[nestcategory],JSON.stringify(nestetdata)]
     //const nestedname = [nestname,JSON.stringify(nestedcategory)]
     
+    /*
     var testname1 = {data1:nestdata1,data2:nestdata2}
     var testname2 = {data3:nestdata3, data4:nestdata4}
 
@@ -59,20 +61,25 @@ function firstentry(){
     var firstentry = {};
     var filenames = filename
     firstentry[filenames] = [categorydata]
+ */
+    var firstentry = {};
+    serverdata = {data1:nestdata1, data2:nestdata2}
+    firstentry[servername] = [serverdata]
+
 
     var nestedvategory = JSON.stringify(firstentry,null,2)
-
-
+    
     console.log(nestedvategory)    
     fs.writeFile('./test.json', nestedvategory, 'utf-8', function(error){
-            if(error){
-                console.log(error)
+        if(error){
+            console.log(error)
         }
     });
     fs.close
+    return;
 }
 
-function appendjson(){
+function getjson(){
     console.log("appendjson")
     fs.readFile('./test.json','utf-8',(err, data)=>{ 
         if(err) {
@@ -80,7 +87,13 @@ function appendjson(){
             return;
         } else{
             console.log(data)
-            return;
+            return data;
         }
     })
+}
+
+
+function appendjson(){
+    jsondata = getjson();
+    console.log(jsondata)
 }
